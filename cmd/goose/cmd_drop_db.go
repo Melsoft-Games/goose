@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/gojuno/goose/lib/goose"
+	"github.com/Melsoft-Games/goose/lib/goose"
 )
 
 var dropDatabaseCmd = &Command{

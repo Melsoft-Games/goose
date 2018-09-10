@@ -7,17 +7,18 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/gojuno/goose/lib/goose"
+	"github.com/Melsoft-Games/goose/lib/goose"
 )
 
 // global options. available to any subcommands.
 var flagPath = flag.String("path", "db", "folder containing db info")
 var flagEnv = flag.String("env", "development", "which DB environment to use")
 var flagPgSchema = flag.String("pgschema", "", "which postgres-schema to migrate (default = none)")
+var flagMigrationsFolder = flag.String("migrationsfolder", "migrations", "folder with migrations")
 
 // helper to create a DBConf from the given flags
 func dbConfFromFlags() (dbconf *goose.DBConf, err error) {
-	return goose.NewDBConf(*flagPath, *flagEnv, *flagPgSchema)
+	return goose.NewDBConf(*flagPath, *flagEnv, *flagPgSchema, *flagMigrationsFolder)
 }
 
 func main() {
