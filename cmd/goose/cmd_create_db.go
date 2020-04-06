@@ -62,14 +62,6 @@ func createDatabaseRun(cmd *Command, args ...string) {
 		if _, err := db.Exec(fmt.Sprintf("CREATE DATABASE %s %s CHARACTER SET utf8 COLLATE utf8_general_ci", ifNotExists, conf.DBName)); err != nil {
 			log.Fatal(err)
 		}
-	case "clickhouse":
-		ifNotExists := ""
-		if isSoft {
-			ifNotExists = "IF NOT EXISTS"
-		}
-		if _, err := db.Exec(fmt.Sprintf("CREATE DATABASE %s %s", ifNotExists, conf.DBName)); err != nil {
-			log.Fatal(err)
-		}
 	default:
 		log.Fatal(fmt.Errorf("unsupported database type: %v", conf.Driver.Name))
 	}
